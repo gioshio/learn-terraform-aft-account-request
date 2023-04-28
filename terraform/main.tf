@@ -13,7 +13,6 @@
   }
 
   account_tags = {
-    "Learn Tutorial" = "AFT"
     "Env" = "Dev"
   }
 
@@ -42,12 +41,11 @@
     ManagedOrganizationalUnit = "Environments"
     SSOUserEmail              = "drafie+stage@actright.com"
     SSOUserFirstName          = "drafie"
-    SSOUserLastName           = "dev"
+    SSOUserLastName           = "stage"
   }
 
   account_tags = {
-    "Learn Tutorial" = "AFT"
-    "Env" = "Dev"
+    "Env" = "Stage"
   }
 
   change_management_parameters = {
@@ -60,4 +58,35 @@
   }
 
   account_customizations_name = "stage"
+}
+    
+    
+################################# PROD ##################################
+    
+module "prod" {
+  source = "./modules/aft-account-request"
+
+  control_tower_parameters = {
+    AccountEmail              = "drafie+prod@actright.com"
+    AccountName               = "Prod"
+    ManagedOrganizationalUnit = "Environments"
+    SSOUserEmail              = "drafie+prod@actright.com"
+    SSOUserFirstName          = "drafie"
+    SSOUserLastName           = "prod"
+  }
+
+  account_tags = {
+    "Env" = "Prod"
+  }
+
+  change_management_parameters = {
+    change_requested_by = "Gio Shio"
+    change_reason       = "AWS Control Tower Account Factory for Terraform"
+  }
+
+  custom_fields = {
+    group = "prod"
+  }
+
+  account_customizations_name = "prod"
 }
